@@ -278,6 +278,8 @@ class ScrewStep(PedicleScrewSimulatorStep):
       self.updateMeasurements()
       self.cameraFocus(self.coords)
       #self.screwLandmarks()
+      
+      slicer.app.layoutManager().setLayout(slicer.vtkMRMLLayoutNode.SlicerLayoutFourUpView)
 
     def insertScrew(self):
       logging.debug("insert")
