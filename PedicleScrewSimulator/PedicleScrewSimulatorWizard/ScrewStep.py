@@ -849,8 +849,12 @@ class ScrewStep(PedicleScrewSimulatorStep):
       lm = slicer.app.layoutManager()
       if lm == None:
         return
-      lm.setLayout(slicer.vtkMRMLLayoutNode.SlicerLayoutOneUp3DView)
+      lm.setLayout(slicer.vtkMRMLLayoutNode.SlicerLayoutFourUpView)
 
+      nodes = slicer.util.getNodesByClass('vtkMRMLSliceCompositeNode')
+      for node in nodes:
+        node.SetSliceIntersectionVisibility(True)
+       
       pNode = self.parameterNode()
       pNode.SetParameter('currentStep', self.stepid)
       logging.debug("Current step: {0}".format(pNode.GetParameter('currentStep')))
